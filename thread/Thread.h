@@ -7,33 +7,48 @@
 
 #include "NonCopyable.h"
 #include <pthread.h>
+#include <assert.h>
+#include <string>
+#include <memory>
 
 namespace fake
 {
+  typedef void (*ThreadFunc)(void);
+
   class Thread : NonCopyable {
   public:
-    explicit Thread()
-        : pid_(0),
+    explicit Thread(const ThreadFunc& func, const std::string& name = std::string())
+        : pid_(new pid_t(0)),
           started_(false),
-          joined_(false)
+          joined_(false),
+          name_(name),
+          func_(func),
+          thread_t_(0)
     {
 
     }
 
-    ~Thread() {
-
+    ~Thread()
+    {
+      if (started_ && !joined_) {
+        pthread_detach(thread_t_);
+      }
     }
 
     bool Start();
     bool Join();
 
-    bool started() { return started_; }
-    bool joined() {return joined_; }
+    bool started() const { return started_; }
+    pid_t tid() const { return *pid_; }
+
 
   private:
-    pid_t pid_;
+    std::shared_ptr<pid_t> pid_;
     bool started_;
     bool joined_;
+    std::string name_;
+    ThreadFunc func_;
+    pthread_t thread_t_;
   };
 }
 
