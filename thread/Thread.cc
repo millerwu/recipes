@@ -1,15 +1,16 @@
 
 
 #include "Thread.h"
-#include "CurrentThread.h"
 #include <sys/prctl.h>
+#include "CurrentThread.h"
 
 namespace fake {
   struct  ThreadData {
-    ThreadData(const ThreadFunc& func, const std::string& name, const std::shared_ptr<pid_t>& pid) :
+    ThreadData(const ThreadFunc& func, void* arg, const std::string& name, const std::shared_ptr<pid_t>& pid) :
         func_(func),
         name_(name),
-        wkpid_(pid)
+        wkpid_(pid),
+        arg_(arg)
     {
 
     }
@@ -25,13 +26,14 @@ namespace fake {
 
       CurrentThread::t_threadName = name_.empty() ? "FakeThread" : name_.c_str();
       ::prctl(PR_SET_NAME, CurrentThread::t_threadName);
-      func_();
+      func_(arg_);
     }
 
   private:
     ThreadFunc func_;
     std::string name_;
     std::weak_ptr<pid_t > wkpid_;
+    void* arg_;
   };
 
   void* StartThread(void* obj)
@@ -46,18 +48,21 @@ namespace fake {
 
 using namespace fake;
 
+unsigned Thread::numCreateded_;
+
 bool Thread::Start()
 {
   assert(!started_);
   started_ = true;
 
-  ThreadData* data = new ThreadData(func_, name_, pid_);
+  ThreadData* data = new ThreadData(func_, arg_,  name_, pid_);
   if (0 != pthread_create(&thread_t_, NULL, StartThread, data) ) {
     started_ = false;
     delete data;
     abort();
   }
 }
+
 bool Thread::Join()
 {
   assert(started_);
