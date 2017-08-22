@@ -5,6 +5,12 @@
 #include "CurrentThread.h"
 
 namespace fake {
+  namespace CurrentThread
+  {
+    __thread pid_t t_cached_Tid = 0;
+    __thread const char* t_threadName = "unknown";
+  }
+
   struct  ThreadData {
     ThreadData(const ThreadFunc& func, void* arg, const std::string& name, const std::shared_ptr<pid_t>& pid) :
         func_(func),

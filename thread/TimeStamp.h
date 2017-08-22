@@ -12,6 +12,7 @@ using namespace std;
 
 namespace fake {
   class TimeStamp : Copyable{
+  public:
     TimeStamp()
       : microSecondsSinceEpoch_(0)
     {

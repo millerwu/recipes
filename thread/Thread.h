@@ -18,7 +18,7 @@ namespace fake
 
   class Thread : NonCopyable {
   public:
-    explicit Thread(const ThreadFunc& func, void* arg,const std::string& name = std::string())
+    explicit Thread(const ThreadFunc func, void* arg,const std::string& name = std::string())
         : pid_(new pid_t(0)),
           started_(false),
           joined_(false),

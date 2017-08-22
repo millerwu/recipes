@@ -11,10 +11,11 @@
 namespace fake {
   class Condition : NonCopyable
   {
+  public:
     Condition(MutexLock& mutex) :
         mutex_(mutex)
     {
-      cond_ = pthread_cond_init(&cond_, NULL);
+      pthread_cond_init(&cond_, NULL);
     }
 
     ~Condition() {
@@ -42,7 +43,7 @@ namespace fake {
 
   private:
     pthread_cond_t cond_;
-    MutexLock mutex_;
+    MutexLock& mutex_;
   };
 }
 

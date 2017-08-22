@@ -5,23 +5,22 @@
 #ifndef FAKE_THREAD_MUTEX_H
 #define FAKE_THREAD_MUTEX_H
 
-#include <boost/noncopyable.hpp>
-
 #include "NonCopyable.h"
 #include "CurrentThread.h"
 #include <pthread.h>
 #include <assert.h>
 
+
 namespace fake {
   class MutexLock : NonCopyable {
   public:
-    Mutex()
+    MutexLock()
       : holder_(0)
     {
       pthread_mutex_init(&mutex_, NULL);
     }
 
-    ~Mutex() {
+    ~MutexLock() {
       assert(holder_==0);
       pthread_mutex_destroy(&mutex_);
     }
@@ -46,7 +45,8 @@ namespace fake {
   };
 
   class GuardMutex : NonCopyable {
-    GuardMutex(MutexLock& mutex)
+  public:
+    explicit GuardMutex(MutexLock& mutex)
         : mutex_(mutex)
     {
       mutex_.Lock();
@@ -57,7 +57,7 @@ namespace fake {
     }
 
   private:
-    MutexLock mutex_;
+    MutexLock& mutex_;
   };
 }
 
