@@ -2,8 +2,8 @@
 // Created by wu on 17-8-14.
 //
 
-#ifndef FAKE_THREAD_CURRENTTHREAD_H
-#define FAKE_THREAD_CURRENTTHREAD_H
+#ifndef FAKE_BASE_CURRENTTHREAD_H
+#define FAKE_BASE_CURRENTTHREAD_H
 
 #include <string>
 #include <unistd.h>
@@ -32,4 +32,4 @@ namespace fake {
   }
 }
 
-#endif //FAKE_THREAD_CURRENTTHREAD_H
+#endif //FAKE_BASE_CURRENTTHREAD_H

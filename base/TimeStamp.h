@@ -2,8 +2,8 @@
 // Created by wu on 17-8-18.
 //
 
-#ifndef FAKE_THREAD_TIMESTAMP_H
-#define FAKE_THREAD_TIMESTAMP_H
+#ifndef FAKE_BASE_TIMESTAMP_H
+#define FAKE_BASE_TIMESTAMP_H
 
 #include "Copyable.h"
 #include <string>
@@ -85,4 +85,4 @@ namespace fake {
 
 
 
-#endif //FAKE_THREAD_TIMESTAMP_H
+#endif //FAKE_BASE_TIMESTAMP_H

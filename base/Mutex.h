@@ -2,8 +2,8 @@
 // Created by wu on 17-8-14.
 //
 
-#ifndef FAKE_THREAD_MUTEX_H
-#define FAKE_THREAD_MUTEX_H
+#ifndef FAKE_BASE_MUTEX_H
+#define FAKE_BASE_MUTEX_H
 
 #include "NonCopyable.h"
 #include "CurrentThread.h"
@@ -61,4 +61,4 @@ namespace fake {
   };
 }
 
-#endif //FAKE_THREAD_MUTEX_H
+#endif //FAKE_BASE_MUTEX_H

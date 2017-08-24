@@ -2,8 +2,8 @@
 // Created by wu on 17-8-14.
 //
 
-#ifndef FAKE_THREAD_CONDITION_H
-#define FAKE_THREAD_CONDITION_H
+#ifndef FAKE_BASE_CONDITION_H
+#define FAKE_BASE_CONDITION_H
 
 #include "NonCopyable.h"
 #include "Mutex.h"
@@ -47,4 +47,4 @@ namespace fake {
   };
 }
 
-#endif //FAKE_THREAD_CONDITION_H
+#endif //FAKE_BASE_CONDITION_H

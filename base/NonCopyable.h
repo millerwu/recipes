@@ -2,8 +2,8 @@
 // Created by wu on 17-8-14.
 //
 
-#ifndef FAKE_THREAD_NONCOPYABLE_H
-#define FAKE_THREAD_NONCOPYABLE_H
+#ifndef FAKE_BASE_NONCOPYABLE_H
+#define FAKE_BASE_NONCOPYABLE_H
 
 namespace fake {
   class NonCopyable{
@@ -17,4 +17,4 @@ namespace fake {
   };
 }
 
-#endif //FAKE_THREAD_NONCOPYABLE_H
+#endif //FAKE_BASE_NONCOPYABLE_H

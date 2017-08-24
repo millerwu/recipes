@@ -2,8 +2,8 @@
 // Created by wu on 17-8-22.
 //
 
-#ifndef FAKE_THREAD_BLOCKINGQUEUE_H
-#define FAKE_THREAD_BLOCKINGQUEUE_H
+#ifndef FAKE_BASE_BLOCKINGQUEUE_H
+#define FAKE_BASE_BLOCKINGQUEUE_H
 
 #include <vector>
 #include "Mutex.h"
@@ -58,4 +58,4 @@ namespace fake {
   };
 }
 
-#endif //FAKE_THREAD_BLOCKINGQUEUE_H
+#endif //FAKE_BASE_BLOCKINGQUEUE_H

@@ -1,0 +1,11 @@
+add_executable(Thread_test Thread_test.cc)
+target_link_libraries(Thread_test fake_base)
+
+add_executable(TimeStamp_test TimeStamp_test.cc)
+target_link_libraries(TimeStamp_test fake_base)
+
+add_executable(BlockingQueue_test BlockingQueue_test.cc)
+target_link_libraries(BlockingQueue_test fake_base)
+
+add_executable(BoundBlockingQueue_test BoundBlockingQueue_test.cc)
+target_link_libraries(BoundBlockingQueue_test fake_base)
